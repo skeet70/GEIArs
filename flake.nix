@@ -42,6 +42,8 @@
           packages = [
             pythonEnv
             pkgs.python310Packages.torch
+            # run `git lfs install --local` to set up
+            pkgs.git-lfs
           ];
         };
 
