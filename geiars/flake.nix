@@ -30,6 +30,7 @@
               cudatoolkit
               # built without this, but fails at runtime
               linuxPackages.nvidia_x11
+              git-lfs
               # cudaPackages.cudnn
               # stdenv.cc
               # libGLU
