@@ -1,0 +1,14 @@
+[project]
+name = "geia"
+description = "generative ai embedding inversion attack"
+version = "0.1.0"
+dependencies = [
+  "numpy",
+  "torch",
+  "transformers",
+  "sentence_transformers",
+  # "simcse",
+  "datasets",
+  "tqdm",
+  "safetensors",
+]
