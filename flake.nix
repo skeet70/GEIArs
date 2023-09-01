@@ -36,14 +36,15 @@
           pkgs.mkShell {
             packages = [
               pythonEnv
-              pkgs.python310Packages.torch
+              # will likely need to move torch from pyproject to here to get cuda support
+              # pkgs.python310Packages.torch
               # run `git lfs install --local` to set up
               pkgs.git-lfs
             ];
           };
 
         # Build our package using `buildPythonPackage
-        packages =
+        packages.default =
           let
             # Returns an attribute set that can be passed to `buildPythonPackage`.
             attrs = pyproject.lib.renderers.buildPythonPackage { inherit python project; };
