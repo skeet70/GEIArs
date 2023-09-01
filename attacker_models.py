@@ -119,9 +119,9 @@ def sequence_cross_entropy_with_logits(logits, targets, mask, label_smoothing, r
     # shape : (batch * sequence_length, num_classes)
     log_probs_flat = F.log_softmax(logits_flat, dim=-1)
     # shape : (batch * max_len, 1)
-    save_file({"targets": targets}, "targets.st")
+    # save_file({"targets": targets}, "targets.st")
     targets_flat = targets.view(-1, 1).long()
-    save_file({"targets_flat": targets_flat}, "targets_flat.st")
+    # save_file({"targets_flat": targets_flat}, "targets_flat.st")
 
     if label_smoothing > 0.0:
         num_classes = logits.size(-1)
