@@ -4,7 +4,7 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs = { self, nixpkgs, pyproject, flake-utils }:
-    flake-utils.lib.eachSystem [ "x86_64-linux" "x86_64-darwin" ] (system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         inherit (nixpkgs) lib;
 
@@ -16,7 +16,7 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-          config.cudaSupport = true;
+          config.cudaSupport = pkgs.stdenvNoCC.isLinux;
         };
         python = pkgs.python310;
 
@@ -44,7 +44,7 @@
           };
 
         # Build our package using `buildPythonPackage
-        packages.default =
+        packages =
           let
             # Returns an attribute set that can be passed to `buildPythonPackage`.
             attrs = pyproject.lib.renderers.buildPythonPackage { inherit python project; };
